@@ -13,11 +13,11 @@ public class RightTurnerTest {
 	public void testTurnRight() {
 		World.setSize(1, 1);
 		World.setDelay(0);
-		RightTurner robot = new RightTurner(1, 1, Directions.East);
+		RightTurnerRobot robot = new RightTurnerRobot(1, 1, Directions.East);
 		robot.turnRight();
 		assertTrue(robot.facingSouth());
 
-		FancyRightTurner fancyRobot = new FancyRightTurner(1, 1, Directions.East);
+		FancyRightTurnerRobot fancyRobot = new FancyRightTurnerRobot(1, 1, Directions.East);
 		fancyRobot.turnRight();
 		assertTrue(fancyRobot.facingSouth());
 	}

@@ -8,7 +8,7 @@ import kareltherobot.Robot;
  * @author ivo.rusev
  *
  */
-public class FancyRightTurner extends Robot {
+public class FancyRightTurnerRobot extends Robot implements RightTurner {
 
 	/**
 	 * TBD
@@ -17,7 +17,7 @@ public class FancyRightTurner extends Robot {
 	 * @param avenue
 	 * @param direction
 	 */
-	public FancyRightTurner(int street, int avenue, Direction direction) {
+	public FancyRightTurnerRobot(int street, int avenue, Direction direction) {
 		super(street, avenue, direction, 0);
 	}
 
