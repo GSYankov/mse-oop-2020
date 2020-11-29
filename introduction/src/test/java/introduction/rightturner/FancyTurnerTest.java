@@ -11,10 +11,9 @@ import kareltherobot.World;
 public class FancyTurnerTest {
 
 	@Test
-	public void testTurnRight() {
+	public void testPolymorphism() {
 		World.setSize(3, 3);
-		World.setVisible();
-		World.setDelay(200);
+		World.setDelay(0);
 
 		RightTurner robot1 = new FancyRightTurnerRobot(1, 1, Directions.East);
 		RightTurner robot2 = new RightTurnerRobot(1, 1, Directions.East);
