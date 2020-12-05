@@ -25,6 +25,9 @@ public class RectangleDrawerRobot extends AdvancedRobot implements Drawer {
 		for (int i = 0; i < 4; i++) {
 			int size = i % 2 == 0 ? rectangle.getWidth() : rectangle.getHeight();
 			for (int j = 0; j < size; j++) {
+				if (!anyBeepersInBeeperBag()) {
+					throw new NoBeepersInBagException("Out of beepers");
+				}
 				super.putBeeper();
 				move();
 			}

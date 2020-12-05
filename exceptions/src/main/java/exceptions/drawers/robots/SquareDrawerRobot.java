@@ -42,6 +42,9 @@ public class SquareDrawerRobot extends AdvancedRobot implements Drawer {
 
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < square.getWidth(); j++) {
+				if (!anyBeepersInBeeperBag()) {
+					throw new NoBeepersInBagException("Out of beepers");
+				}
 				super.putBeeper();
 				move();
 			}
