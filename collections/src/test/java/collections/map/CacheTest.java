@@ -1,7 +1,7 @@
 package collections.map;
 
-import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
 
@@ -21,10 +21,10 @@ class CacheTest {
 		cache.put(personB.getName(), personB);
 		cache.put(personC.getName(), personC);
 
-		Person actual = cache.get(personB);
+		Person actual = cache.get(personB.getName());
 		assertEquals(personB, actual);
 
-		actual = cache.get(personC);
+		actual = cache.get(personC.getName());
 		assertEquals(personC, actual);
 	}
 

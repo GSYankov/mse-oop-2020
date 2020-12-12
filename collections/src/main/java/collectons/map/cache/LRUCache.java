@@ -70,8 +70,7 @@ public class LRUCache<Key, Value> implements Map<Key, Value> {
 
 	@Override
 	public Value remove(Object key) {
-		hits.remove(key);
-		return cache.remove(key);
+		throw new UnsupportedOperationException("Not implemented");
 	}
 
 	@Override
