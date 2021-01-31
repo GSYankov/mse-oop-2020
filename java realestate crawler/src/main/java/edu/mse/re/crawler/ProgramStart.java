@@ -6,6 +6,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
 import edu.mse.re.extractor.BaseExtractor;
 import edu.mse.re.extractor.ImotBgExreactor;
 import edu.mse.re.extractor.ImotiNetExreactor;
@@ -15,10 +17,11 @@ import edu.mse.re.thread.BrowserThreadImotiNet;
 
 public class ProgramStart {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, InterruptedException {
 
 		int parallelism = 1;
 		int maxCoutOfOffers = 5;
+		int delayConst = 2;
 		ExecutorService executor = Executors.newFixedThreadPool(parallelism);
 
 		Collection<RealEstateOffer> reOffers = Collections.synchronizedCollection(new ArrayList<RealEstateOffer>());
@@ -34,6 +37,9 @@ public class ProgramStart {
 		BaseExtractor ine = new ImotiNetExreactor(imotiNetInitialUrlPattern);
 
 		while (reOffers.size() <= maxCoutOfOffers) {
+
+			int delay = (int) (Math.random() * delayConst *1000) ;
+			TimeUnit.MICROSECONDS.sleep(delay);
 
 			Integer activeThreads = Integer.parseInt(executor.toString().split(",")[2].split(" = ")[1]);
 
