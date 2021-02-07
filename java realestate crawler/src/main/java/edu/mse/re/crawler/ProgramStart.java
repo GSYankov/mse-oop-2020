@@ -26,7 +26,7 @@ public class ProgramStart {
 
 		Collection<RealEstateOffer> reOffers = Collections.synchronizedCollection(new ArrayList<RealEstateOffer>());
 
-		String imotBgFilter = "6atskq";
+		String imotBgFilter = "6cku5f";
 		String imotBgInitialUrlPattern = String.format("https://www.imot.bg/pcgi/imot.cgi?act=3&slink=%s&f1=%s",
 				imotBgFilter, "%s");
 		BaseExtractor ibe = new ImotBgExreactor(imotBgInitialUrlPattern);
@@ -57,7 +57,7 @@ public class ProgramStart {
 				executor.execute(browserThread);
 			}
 
-			if (ibe.getPageOffers().size() > 0) {
+			if (ine.getPageOffers().size() > 0) {
 				String urlIne = ine.getPageOffers().poll();
 				BrowserThreadImotiNet browserThreadIne = new BrowserThreadImotiNet(reOffers, urlIne);
 				executor.execute(browserThreadIne);

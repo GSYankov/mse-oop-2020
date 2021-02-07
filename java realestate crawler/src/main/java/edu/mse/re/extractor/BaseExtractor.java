@@ -12,6 +12,7 @@ public abstract class BaseExtractor {
 
 	private By offersSelector;
 	private int pageNumber;
+	private boolean nothingToShow;
 
 	WebDriver driver;
 	protected String initialUrlPattern;
@@ -22,6 +23,7 @@ public abstract class BaseExtractor {
 		this.initialUrlPattern = initialUrlPattern;
 		this.offersSelector = offersSelector;
 		this.pageofferLinks = new LinkedList<String>();
+		this.nothingToShow = false;
 	}
 
 	private void collectPageOffers() {
@@ -32,9 +34,17 @@ public abstract class BaseExtractor {
 		this.pageofferLinks = new LinkedList<String>(driver.findElements(this.offersSelector).stream()
 				.map(el -> el.getAttribute("href")).collect(Collectors.toList()));
 		this.driver.close();
+		
+		if (this.pageofferLinks.size() == 0) {
+			this.nothingToShow = true;
+		}
 	}
 
 	public Queue<String> getPageOffers() {
+		if (this.nothingToShow) {
+			return new LinkedList<String>();
+		}
+		
 		if (this.pageofferLinks.size() == 0) {
 			collectPageOffers();
 		}
